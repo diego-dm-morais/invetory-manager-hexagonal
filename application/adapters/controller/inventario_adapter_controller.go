@@ -1,7 +1,7 @@
 package controller
 
 import (
-	entities2 "invetory-manager-hexagonal/application/core/entities"
+	core_entities "invetory-manager-hexagonal/application/core/entities"
 	"invetory-manager-hexagonal/application/core/usecase"
 )
 
@@ -10,16 +10,16 @@ type InventarioAdapterController struct {
 }
 
 func (i InventarioAdapterController) Salvar(inventario InventarioDto) error {
-	var itens []entities2.Item
+	var itens []core_entities.Item
 	for _, item := range inventario.Itens {
-		newItem := entities2.NewItem(
+		newItem := core_entities.NewItem(
 			item.Descricao,
 			item.Preco,
 			item.Quantidade,
 		)
 		itens = append(itens, newItem)
 	}
-	newInventario := entities2.NewInventario(inventario.Titulo, itens)
+	newInventario := core_entities.NewInventario(inventario.Titulo, itens)
 
 	return i.inventarioApplication.Salvar(newInventario, inventario.IdUsuario)
 }
