@@ -1,6 +1,8 @@
 package api
 
-import "invetory-manager-hexagonal/application/usecase"
+import (
+	"invetory-manager-hexagonal/application/core/usecase"
+)
 
 type PermissaoAdapterApi struct {
 	usecase.IPermissaoAdapterApi

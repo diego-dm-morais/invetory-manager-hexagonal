@@ -5,7 +5,7 @@ import (
 	"invetory-manager-hexagonal/application/adapters/api"
 	adapter_controller "invetory-manager-hexagonal/application/adapters/controller"
 	"invetory-manager-hexagonal/application/adapters/repository"
-	"invetory-manager-hexagonal/application/usecase"
+	"invetory-manager-hexagonal/application/core/usecase"
 	"invetory-manager-hexagonal/framework/datasource"
 	framework_repository "invetory-manager-hexagonal/framework/repository"
 	"net/http"

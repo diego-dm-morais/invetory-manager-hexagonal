@@ -3,7 +3,7 @@ package repository
 import (
 	"errors"
 	"invetory-manager-hexagonal/application/adapters/repository"
-	"invetory-manager-hexagonal/application/entities"
+	"invetory-manager-hexagonal/application/core/entities"
 )
 
 type InvetarioRepositoryMongo struct {

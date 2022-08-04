@@ -5,7 +5,7 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
 	"go.mongodb.org/mongo-driver/mongo"
-	"invetory-manager-hexagonal/application/entities"
+	entities2 "invetory-manager-hexagonal/application/core/entities"
 	"testing"
 )
 
@@ -21,13 +21,13 @@ func Test_salvar_inventario_com_conector_mongobd(t *testing.T) {
 	connectorMongoDataource.On("Disconnect").Return(true, nil)
 	connectorMongoDataource.On("Save").Return("05919a92-e4df-406f-825a-1da683182ed9", nil)
 
-	itens := []entities.Item{
-		*entities.NewItem("Chocolate", 10.3, 20),
-		*entities.NewItem("Refrigerante", 7.4, 100),
-		*entities.NewItem("Bolacha", 4.5, 70),
+	itens := []entities2.Item{
+		*entities2.NewItem("Chocolate", 10.3, 20),
+		*entities2.NewItem("Refrigerante", 7.4, 100),
+		*entities2.NewItem("Bolacha", 4.5, 70),
 	}
 
-	inventario := entities.NewInventario("Inventário 2022", itens)
+	inventario := entities2.NewInventario("Inventário 2022", itens)
 
 	id, err := invetarioRepositoryMongo.Inserir(*inventario)
 
@@ -54,13 +54,13 @@ func Test_salvar_inventario_com_error(t *testing.T) {
 	connectorMongoDataource.On("Disconnect").Return(true, nil)
 	connectorMongoDataource.On("Save").Return("", errors.New("erro ao persistir dados na base"))
 
-	itens := []entities.Item{
-		*entities.NewItem("Chocolate", 10.3, 20),
-		*entities.NewItem("Refrigerante", 7.4, 100),
-		*entities.NewItem("Bolacha", 4.5, 70),
+	itens := []entities2.Item{
+		*entities2.NewItem("Chocolate", 10.3, 20),
+		*entities2.NewItem("Refrigerante", 7.4, 100),
+		*entities2.NewItem("Bolacha", 4.5, 70),
 	}
 
-	inventario := entities.NewInventario("Inventário 2022", itens)
+	inventario := entities2.NewInventario("Inventário 2022", itens)
 
 	id, err := invetarioRepositoryMongo.Inserir(*inventario)
 	assert.Errorf(err, err.Error())

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"invetory-manager-hexagonal/application/entities"
+	entities2 "invetory-manager-hexagonal/application/core/entities"
 	"testing"
 )
 
@@ -20,13 +20,13 @@ func Test_devera_salvar_inventario_com_sucesso(t *testing.T) {
 
 	var invetarioApplication IInventarioApplication = NewInventarioApplication(invetarioDatasource, permissaoAdapter)
 
-	itens := []entities.Item{
-		entities.NewItem("Chocolate", 10.3, 20),
-		entities.NewItem("Refrigerante", 7.4, 100),
-		entities.NewItem("Bolacha", 4.5, 70),
+	itens := []entities2.Item{
+		entities2.NewItem("Chocolate", 10.3, 20),
+		entities2.NewItem("Refrigerante", 7.4, 100),
+		entities2.NewItem("Bolacha", 4.5, 70),
 	}
 
-	inventario := entities.NewInventario("Inventário 2022", itens)
+	inventario := entities2.NewInventario("Inventário 2022", itens)
 	err := invetarioApplication.Salvar(inventario, "f5b21367-226e-4df9-b36b-bb4dd4bdddb1")
 
 	mock.AssertExpectationsForObjects(t, permissaoAdapter, invetarioDatasource)
@@ -45,13 +45,13 @@ func Test_devera_salvar_inventario_com_item_com_preco_igual_zero(t *testing.T) {
 
 	var invetarioApplication IInventarioApplication = NewInventarioApplication(invetarioDatasource, permissaoAdapter)
 
-	itens := []entities.Item{
-		entities.NewItem("Chocolate", 0, 20),
-		entities.NewItem("Refrigerante", 7.4, 100),
-		entities.NewItem("Bolacha", 4.5, 70),
+	itens := []entities2.Item{
+		entities2.NewItem("Chocolate", 0, 20),
+		entities2.NewItem("Refrigerante", 7.4, 100),
+		entities2.NewItem("Bolacha", 4.5, 70),
 	}
 
-	inventario := entities.NewInventario("Inventário 2022", itens)
+	inventario := entities2.NewInventario("Inventário 2022", itens)
 	err := invetarioApplication.Salvar(inventario, "f5b21367-226e-4df9-b36b-bb4dd4bdddb1")
 
 	mock.AssertExpectationsForObjects(t, permissaoAdapter, invetarioDatasource)
@@ -72,13 +72,13 @@ func Test_devera_tentar_salvar_com_um_usuario_sem_permissao(t *testing.T) {
 
 	var invetarioApplication IInventarioApplication = NewInventarioApplication(invetarioDatasource, permissaoAdapter)
 
-	itens := []entities.Item{
-		entities.NewItem("Chocolate", 10.3, 20),
-		entities.NewItem("Refrigerante", 7.4, 100),
-		entities.NewItem("Bolacha", 4.5, 70),
+	itens := []entities2.Item{
+		entities2.NewItem("Chocolate", 10.3, 20),
+		entities2.NewItem("Refrigerante", 7.4, 100),
+		entities2.NewItem("Bolacha", 4.5, 70),
 	}
 
-	inventario := entities.NewInventario("Inventário 2022", itens)
+	inventario := entities2.NewInventario("Inventário 2022", itens)
 	err := invetarioApplication.Salvar(inventario, "f5b21367-226e-4df9-b36b-bb4dd4bdddb1")
 
 	mock.AssertExpectationsForObjects(t, permissaoAdapter, invetarioDatasource)
@@ -100,13 +100,13 @@ func Test_devera_tratar_o_erro_retornado_pelo_datasource(t *testing.T) {
 
 	var invetarioApplication IInventarioApplication = NewInventarioApplication(invetarioDatasource, permissaoAdapter)
 
-	itens := []entities.Item{
-		entities.NewItem("Chocolate", 10.3, 20),
-		entities.NewItem("Refrigerante", 7.4, 100),
-		entities.NewItem("Bolacha", 4.5, 70),
+	itens := []entities2.Item{
+		entities2.NewItem("Chocolate", 10.3, 20),
+		entities2.NewItem("Refrigerante", 7.4, 100),
+		entities2.NewItem("Bolacha", 4.5, 70),
 	}
 
-	inventario := entities.NewInventario("Inventário 2022", itens)
+	inventario := entities2.NewInventario("Inventário 2022", itens)
 	err := invetarioApplication.Salvar(inventario, "f5b21367-226e-4df9-b36b-bb4dd4bdddb1")
 
 	mock.AssertExpectationsForObjects(t, permissaoAdapter, invetarioDatasource)

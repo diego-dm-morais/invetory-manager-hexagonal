@@ -2,7 +2,7 @@ package repository
 
 import (
 	"github.com/stretchr/testify/mock"
-	"invetory-manager-hexagonal/application/entities"
+	"invetory-manager-hexagonal/application/core/entities"
 )
 
 type MockInvetarioRepositoryMongo struct {

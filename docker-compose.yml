@@ -34,7 +34,7 @@ services:
       - "host.docker.internal:172.4.0.1"
 
   invetory-manager:
-    image: inventory_manager:1.0.4
+    image: inventory_manager:1.0.5
     build: .
     container_name: inventory_manager
     environment:

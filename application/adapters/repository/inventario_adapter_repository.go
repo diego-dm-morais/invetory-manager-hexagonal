@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"invetory-manager-hexagonal/application/entities"
-	"invetory-manager-hexagonal/application/usecase"
+	"invetory-manager-hexagonal/application/core/entities"
+	"invetory-manager-hexagonal/application/core/usecase"
 )
 
 type InventarioAdapterRepository struct {
