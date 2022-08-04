@@ -19,12 +19,16 @@ func (i InventarioController) Save(c echo.Context) error {
 	inventarioDto := new(adapter_controller.InventarioDto)
 	err := c.Bind(inventarioDto)
 	if err != nil {
-		return err
+		errorResponse := new(ErrorResponse)
+		errorResponse.Error = err.Error()
+		return c.JSON(http.StatusInternalServerError, errorResponse)
 	}
 
 	err = i.inventarioAdapterController.Salvar(*inventarioDto)
 	if err != nil {
-		return err
+		errorResponse := new(ErrorResponse)
+		errorResponse.Error = err.Error()
+		return c.JSON(http.StatusInternalServerError, errorResponse)
 	}
 
 	return c.NoContent(http.StatusCreated)
